@@ -5,7 +5,7 @@
 * Clone with `git clone git@github.com:manoj-nama/design-for-devs.git`
 * `cd design-for-devs`
 * install dependencies using `npm install`
-* Make sure you have `grunt-cli` (`npm i -g grunt-cli`) installed
+* Make sure you have `grunt-cli` (`npm install -g grunt-cli`) installed
 * Make sure you also have `sass` installed (`apt-get install ruby && gem install sass`)
-* To run the app `grunt`
+* To run the app do `grunt`
 * App will be up on `http://localhost:8888`
