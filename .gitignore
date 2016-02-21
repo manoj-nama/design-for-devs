@@ -1,2 +1,7 @@
 node_modules
 .idea
+.sass-cache
+.tmp
+dist
+public/assets/styles/*.css
+public/assets/styles/*.map
