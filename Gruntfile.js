@@ -20,7 +20,7 @@ module.exports = function (grunt) {
          },
          compass: {
             files: ["public/**/*.{scss,sass}"],
-            tasks: ["sass:dev", "express:dev"]
+            tasks: ["sass:dev"]
          }
       },
       express: {
