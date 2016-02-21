@@ -7,7 +7,7 @@ module.exports = function (grunt) {
       sass: {
          dev: {
             options: {
-               style: "expanded"
+               style: "compressed"
             },
             files: {
                "public/assets/styles/main.css": "public/assets/styles/main.scss"
@@ -15,16 +15,27 @@ module.exports = function (grunt) {
          }
       },
       watch: {
+         options: {
+            livereload: true
+         },
          compass: {
             files: ["public/**/*.{scss,sass}"],
-            tasks: ["sass:dev"]
+            tasks: ["sass:dev", "express:dev"]
+         }
+      },
+      express: {
+         dev: {
+            options: {
+               script: 'app.js'
+            }
          }
       }
    });
 
    grunt.loadNpmTasks("grunt-contrib-sass");
+   grunt.loadNpmTasks("grunt-express-server");
    grunt.loadNpmTasks("grunt-contrib-watch");
 
-   grunt.registerTask("default", ["sass", "watch"]);
+   grunt.registerTask("default", ["express", "sass", "watch"]);
 
 };
