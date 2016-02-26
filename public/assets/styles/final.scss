@@ -1,0 +1,318 @@
+@mixin hamburger {
+  content: "";
+  height: 4px;
+  border-radius: 3px;
+  left: 0;
+  background: white;
+  position: absolute;
+  width: 35px;
+}
+
+@mixin profilePic {
+  float: right;
+  width: 45px;
+  height: 45px;
+  background-color: #eee;
+  display: inline-block;
+  border-radius: 50%;
+}
+
+@mixin profileDetails {
+  float: left;
+  margin: 0 10px;
+  line-height: 1.4em;
+  span {
+    display: block;
+    font-weight: 300;
+    text-align: right;
+    &.name {
+      font-weight: 400;
+    }
+    &.email {
+      color: #ccc;
+    }
+  }
+}
+
+.clearfix {
+  &::after {
+    content: "";
+    display: block;
+    width: 100%;
+    clear: both;
+  }
+}
+
+body {
+  background-color: #d9dbda;
+}
+
+.final-design {
+  font-size: 100%;
+  font-family: 'Lato', 'Open Sans', sans-serif;
+  header {
+    background-color: #2e3d54;
+    .menu-wrapper {
+      float: left;
+      .menu-handle {
+        display: none;
+      }
+      ul.menu {
+        list-style: none;
+        overflow: hidden;
+        li {
+          float: left;
+          &.active {
+            a {
+              font-weight: 400;
+            }
+          }
+          a {
+            padding: 20px;
+            display: inline-block;
+            text-decoration: none;
+            font-weight: 100;
+            color: #fff;
+            .text {
+              font-size: 1.2em;
+              text-transform: capitalize;
+            }
+            .badge {
+              font-size: 0.8em;
+              padding: 2px 5px;
+              background-color: #526176;
+              border-radius: 3px;
+              display: inline-block;
+              position: relative;
+              top: -2px;
+            }
+            &:hover {
+              background-color: #1f2d42;
+            }
+          }
+        }
+      }
+    }
+
+    .profile {
+      float: right;
+      padding: 10px;
+      .details {
+        @include profileDetails;
+        span {
+          color: #fff;
+        }
+      }
+      .pic {
+        @include profilePic;
+      }
+    }
+  }
+
+  section.sub-header {
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+    .folders {
+      list-style: none;
+      margin: 0 auto;
+      overflow: hidden;
+      li {
+        display: inline-block;
+        &.active {
+          a {
+            font-weight: 400;
+            background-color: #eee;
+            color: #000;
+          }
+        }
+        a {
+          display: block;
+          padding: 20px 10px;
+          text-decoration: none;
+          color: #333;
+          font-weight: 300;
+          &:hover {
+            background-color: #f5f5f5;
+          }
+          .badge {
+            position: relative;
+            font-size: 0.8em;
+            color: #fff;
+            font-weight: 300;
+            padding: 2px 3px;
+            border-radius: 3px;
+            &.grey {
+              background-color: #adb0b5;
+            }
+            &.green {
+              background-color: #29d462;
+            }
+            &.orange {
+              background-color: #fdb83f;
+            }
+            &.purple {
+              background-color: #c059e8;
+            }
+          }
+          .title {
+            text-transform: capitalize;
+          }
+        }
+      }
+    }
+  }
+
+  section.content {
+    width: 90%;
+    max-width: 1270px;
+    margin: 20px auto;
+
+    .email-list {
+      overflow: hidden;
+      text-align: center;
+      margin: 0 auto;
+
+      .email-item {
+        width: 50%;
+        margin: 10px;
+        display: inline-block;
+        background-color: #fff;
+        border-radius: 5px;
+        overflow: hidden;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        max-width: 300px;
+        .head-section {
+          padding: 10px;
+          .pic {
+            @include profilePic;
+            float: left;
+          }
+          .details {
+            @include profileDetails;
+            span {
+              color: #333;
+              text-align: left;
+            }
+          }
+        }
+        .copy {
+          padding: 10px;
+          text-align: left;
+          .title {
+            font-size: 1.8em;
+            font-weight: 300;
+            color: #333;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            padding: 20px 0;
+          }
+          .text {
+            font-weight: 300;
+            color: #777;
+          }
+        }
+        .meta {
+          margin-top: 10px;
+          padding: 10px;
+          border-top: 1px solid #eee;
+          font-size: 0.9em;
+          color: #999;
+          font-weight: 300;
+          background-color: #f5f5f5;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .final-design {
+    header {
+      position: relative;
+      .menu-wrapper {
+        .menu-handle {
+          display: inline-block;
+          padding: 20px 10px;
+          margin-top: 10px;
+          margin-left: 20px;
+
+          .icon {
+            height: 4px;
+            border-radius: 3px;
+            position: relative;
+            display: block;
+            width: 35px;
+            background-color: white;
+            &::after {
+              top: -12px;
+              @include hamburger;
+            }
+            &::before {
+              top: 12px;
+              @include hamburger;
+            }
+          }
+        }
+        &.open {
+          ul.menu {
+            display: block;
+            width: 70%;
+            max-width: 250px;
+          }
+        }
+        ul.menu {
+          display: none;
+          z-index: 101;
+          position: absolute;
+          top: 65px;
+          left: 0;
+          background-color: #fff;
+          box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+          li {
+            float: none;
+            a {
+              display: block;
+              color: #333;
+              &:hover {
+                color: #fff;
+              }
+              .badge {
+                color: #fff;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .final-design {
+    section.content {
+      .email-list {
+        .email-item {
+          float: none;
+          width: 100%;
+          margin: 0 0 20px 0;
+          max-width: 100%;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 380px) {
+  .final-design {
+    header {
+      .profile {
+        .details {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
