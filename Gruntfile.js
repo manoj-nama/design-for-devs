@@ -45,6 +45,7 @@ module.exports = function (grunt) {
    grunt.loadNpmTasks("grunt-express-server");
    grunt.loadNpmTasks("grunt-contrib-watch");
 
-   grunt.registerTask("default", ["express", "sass", "autoprefixer", "watch"]);
+   grunt.registerTask("serve", ["default"]);
+   grunt.registerTask("default", ["sass", "autoprefixer", "express", "watch"]);
 
 };
