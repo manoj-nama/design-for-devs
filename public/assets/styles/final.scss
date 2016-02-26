@@ -1,3 +1,52 @@
+@mixin hamburger {
+  content: "";
+  height: 4px;
+  border-radius: 3px;
+  left: 0;
+  background: white;
+  position: absolute;
+  width: 35px;
+}
+
+@mixin profilePic {
+  float: right;
+  width: 45px;
+  height: 45px;
+  background-color: #eee;
+  display: inline-block;
+  border-radius: 50%;
+}
+
+@mixin profileDetails {
+  float: left;
+  margin: 0 10px;
+  line-height: 1.4em;
+  span {
+    display: block;
+    font-weight: 300;
+    text-align: right;
+    &.name {
+      font-weight: 400;
+    }
+    &.email {
+      color: #ccc;
+    }
+  }
+}
+
+.clearfix {
+  &::after {
+    content: "";
+    display: block;
+    width: 100%;
+    clear: both;
+  }
+}
+
+body {
+  background-color: #d9dbda;
+}
+
 .final-design {
   font-size: 100%;
   font-family: 'Lato', 'Open Sans', sans-serif;
@@ -49,29 +98,13 @@
       float: right;
       padding: 10px;
       .details {
-        float: left;
-        margin: 0 10px;
-        line-height: 1.4em;
+        @include profileDetails;
         span {
-          display: block;
           color: #fff;
-          font-weight: 300;
-          text-align: right;
-          &.name {
-            font-weight: 400;
-          }
-          &.email {
-            color: #ccc;
-          }
         }
       }
       .pic {
-        float: right;
-        width: 45px;
-        height: 45px;
-        background-color: #eee;
-        display: inline-block;
-        border-radius: 50%;
+        @include profilePic;
       }
     }
   }
@@ -129,25 +162,69 @@
       }
     }
   }
-}
 
-.clearfix {
-  &::after {
-    content: "";
-    display: block;
-    width: 100%;
-    clear: both;
+  section.content {
+    width: 90%;
+    max-width: 1270px;
+    margin: 20px auto;
+
+    .email-list {
+      overflow: hidden;
+      text-align: center;
+      margin: 0 auto;
+
+      .email-item {
+        width: 50%;
+        margin: 10px;
+        display: inline-block;
+        background-color: #fff;
+        border-radius: 5px;
+        overflow: hidden;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        max-width: 300px;
+        .head-section {
+          padding: 10px;
+          .pic {
+            @include profilePic;
+            float: left;
+          }
+          .details {
+            @include profileDetails;
+            span {
+              color: #333;
+              text-align: left;
+            }
+          }
+        }
+        .copy {
+          padding: 10px;
+          text-align: left;
+          .title {
+            font-size: 1.8em;
+            font-weight: 300;
+            color: #333;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            padding: 20px 0;
+          }
+          .text {
+            font-weight: 300;
+            color: #777;
+          }
+        }
+        .meta {
+          margin-top: 10px;
+          padding: 10px;
+          border-top: 1px solid #eee;
+          font-size: 0.9em;
+          color: #999;
+          font-weight: 300;
+          background-color: #f5f5f5;
+        }
+      }
+    }
   }
-}
-
-@mixin hamburger {
-  content: "";
-  height: 4px;
-  border-radius: 3px;
-  left: 0;
-  background: white;
-  position: absolute;
-  width: 35px;
 }
 
 @media screen and (max-width: 767px) {
@@ -201,11 +278,41 @@
               &:hover {
                 color: #fff;
               }
+              .badge {
+                color: #fff;
+              }
             }
           }
         }
       }
-
     }
   }
 }
+
+@media screen and (max-width: 640px) {
+  .final-design {
+    section.content {
+      .email-list {
+        .email-item {
+          float: none;
+          width: 100%;
+          margin: 0 0 20px 0;
+          max-width: 100%;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 380px) {
+  .final-design {
+    header {
+      .profile {
+        .details {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
