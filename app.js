@@ -5,9 +5,11 @@ var express = require("express"),
    path = require("path"),
    app = express();
 
-app.use(compression({threshold: 0}));
+app.use(compression({
+   threshold: 0
+}));
 app.use(express.static(path.join(process.cwd(), "public")));
 
-app.listen(8888, "0.0.0.0", function () {
+app.listen(process.env.PORT || 8888, "0.0.0.0", function() {
    console.log("Server running on port 8888");
 });
