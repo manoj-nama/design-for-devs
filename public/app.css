@@ -137,6 +137,8 @@ body {
   background-color: #fff;
   border-radius: 5px;
   overflow: hidden;
+  -webkit-animation: init 0.5s linear;
+          animation: init 0.5s linear;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
   max-width: 300px; }
 .final-design section.content .email-list .email-item .head-section {
@@ -250,3 +252,29 @@ body {
 @media screen and (max-width: 380px) {
   .final-design header .profile .details {
     display: none; } }
+@-webkit-keyframes init {
+  0% {
+    -webkit-transform: translateY(50px);
+            transform: translateY(50px);
+    opacity: 0; }
+  80% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+    opacity: 0.2; }
+  100% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+    opacity: 1; } }
+@keyframes init {
+  0% {
+    -webkit-transform: translateY(50px);
+            transform: translateY(50px);
+    opacity: 0; }
+  80% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+    opacity: 0.2; }
+  100% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+    opacity: 1; } }
